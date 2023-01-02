@@ -35,7 +35,7 @@ class Portfolio(TimeStampedUUIDModel):
         self.title = data.get('title', self.title)
         self.description = data.get('description', self.description)
         self.category = data.get('category', self.category)
-        self.image = data.get('image', self.image)
+        #self.image = data.get('image', self.image)
         self.link = data.get('link', self.link)
         self.save()
 
