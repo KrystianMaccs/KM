@@ -1,4 +1,7 @@
+from django.db import models
 import uuid
+from django.utils.text import slugify
+
 from apps.utils.models import TimeStampedUUIDModel
 
 class Category(TimeStampedUUIDModel):
@@ -20,10 +23,21 @@ class Category(TimeStampedUUIDModel):
 
 class Portfolio(TimeStampedUUIDModel):
     title = models.CharField(max_length=100, default='')
-    detail = models.CharField(max_length=100, default='')
+    description = models.CharField(max_length=100, default='')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=None)
-    image = CloudinaryField("featured image", blank=True)
-    link = models.CharField(max_length=255, default='')
+    #image = CloudinaryField("featured image", blank=True)
+    link = models.URLField(max_length=255, default='')
 
-    def _str_(self):
+    def __str__(self):
         return self.title
+    
+    def update(self, data):
+        self.title = data.get('title', self.title)
+        self.description = data.get('description', self.description)
+        self.category = data.get('category', self.category)
+        self.image = data.get('image', self.image)
+        self.link = data.get('link', self.link)
+        self.save()
+
+    def delete(self):
+        self.delete()

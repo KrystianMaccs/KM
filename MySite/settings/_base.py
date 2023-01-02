@@ -30,10 +30,12 @@ DJANGO_APPS = [
 
 SITE_ID = 1
 
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    "cloudinary",
+]
 
 LOCAL_APPS = [
-    "apps.users", 
+    "apps.users",
     "apps.utils",
     "apps.portfolio",
 ]
