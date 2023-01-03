@@ -9,6 +9,12 @@ import cloudinary.api
 
 # Cloudinary config
 
+"""cloudinary.config(
+    CLOUD_NAME="drxmf5dr5",
+    API_KEY=166777423362632,
+    API_SECRET=fSsD1ufSdP6BdDy4MiuSy2zoLmw
+)"""
+
 cloudinary.config( 
   cloud_name = "CLOUD_NAME", 
   api_key = "API_KEY", 
@@ -21,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
