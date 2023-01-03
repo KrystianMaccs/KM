@@ -10,7 +10,7 @@ import cloudinary.api
 # Cloudinary config
 
 cloudinary.config( 
-  cloud_name = config('CLOUD_NAME'), 
+  cloud_name = config("CLOUD_NAME"), 
   api_key = config("API_KEY"), 
   api_secret = config("API_SECRET"),
 )
@@ -26,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '*.vercel.app']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '*.onrender.com']
 #ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
