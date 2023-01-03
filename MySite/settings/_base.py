@@ -2,6 +2,19 @@ from decouple import config, Csv
 from pathlib import Path
 import os
 
+# Cloudinary imports
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+# Cloudinary config
+
+cloudinary.config( 
+  cloud_name = config("CLOUD_NAME"), 
+  api_key = config("API_KEY"), 
+  api_secret = config("API_SECRET")
+)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -32,6 +45,7 @@ DJANGO_APPS = [
 SITE_ID = 1
 
 THIRD_PARTY_APPS = [
+    "cloudinary",
 ]
 
 LOCAL_APPS = [

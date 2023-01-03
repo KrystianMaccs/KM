@@ -5,7 +5,8 @@
     
     <ul>
         {% for category in categories %}
-            <li><a href="{% url 'category_detail' category.id %}">{{ category.name }}</a></li>
+            <li><a href='categories/{{category.name}}'>{{category.name}}</a></li>
+            <img src="{{category.image.url}}" alt="fish">
         {% endfor %}
     </ul>
 {% endblock %}

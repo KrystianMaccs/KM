@@ -5,8 +5,8 @@
     
     <ul>
         {% for portfolio in portfolios %}
-            <li><a href="{% url 'portfolio_detail' portfolio.id %}">{{ portfolio.title }}</a>
-            </li>
+            <p>{{ portfolio }}</p>
+            <img src="{{portfolio.image.url}}" alt="fish">
         {% endfor %}
     </ul>
 {% endblock %}

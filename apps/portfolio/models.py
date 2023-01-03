@@ -1,11 +1,13 @@
 from django.db import models
 import uuid
 from django.utils.text import slugify
+from cloudinary.models import CloudinaryField
 
 from apps.utils.models import TimeStampedUUIDModel
 
 class Category(TimeStampedUUIDModel):
     name = models.CharField(max_length=100, default='')
+    image = CloudinaryField("featured image", blank=True)
     slug = models.SlugField(max_length=200, default='', blank=True)
     
     def save(self, *args, **kwargs):
@@ -32,7 +34,7 @@ class Portfolio(TimeStampedUUIDModel):
     title = models.CharField(max_length=100, default='')
     description = models.CharField(max_length=100, default='')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=None)
-    #image = CloudinaryField("featured image", blank=True)
+    image = CloudinaryField("featured image", blank=True)
     link = models.URLField(max_length=255, default='')
 
     def __str__(self):
@@ -42,7 +44,7 @@ class Portfolio(TimeStampedUUIDModel):
         self.title = data.get('title', self.title)
         self.description = data.get('description', self.description)
         self.category = data.get('category', self.category)
-        #self.image = data.get('image', self.image)
+        self.image = data.get('image', self.image)
         self.link = data.get('link', self.link)
         self.save()
 
