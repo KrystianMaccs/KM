@@ -10,9 +10,9 @@ import cloudinary.api
 # Cloudinary config
 
 cloudinary.config( 
-  cloud_name = config("CLOUD_NAME"), 
-  api_key = config("API_KEY"), 
-  api_secret = config("API_SECRET"),
+  cloud_name = "CLOUD_NAME", 
+  api_key = "API_KEY", 
+  api_secret = "API_SECRET",
 )
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
