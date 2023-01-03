@@ -1,6 +1,8 @@
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView
+#from django.views.generic.edit import CreateView, ModelFormMixin
+
 from apps.portfolio.models import Category, Portfolio
-#from .forms import CategoryForm, PortfolioForm
+from apps.portfolio.forms import CategoryForm, PortfolioForm
 
 class CategoryListView(ListView):
     model = Category
@@ -14,12 +16,12 @@ class CategoryDetailView(DetailView):
 
 class CategoryCreateView(CreateView):
     model = Category
-    #form_class = CategoryForm
+    form_class = CategoryForm
     template_name = 'portfolio/category_create.html'
 
 class CategoryUpdateView(UpdateView):
     model = Category
-    #form_class = CategoryForm
+    form_class = CategoryForm
     template_name = 'portfolio/category_update.html'
 
 class CategoryDeleteView(DeleteView):
@@ -39,12 +41,12 @@ class PortfolioDetailView(DetailView):
 
 class PortfolioCreateView(CreateView):
     model = Portfolio
-    #form_class = PortfolioForm
+    form_class = PortfolioForm
     template_name = 'portfolio/portfolio_create.html'
 
 class PortfolioUpdateView(UpdateView):
     model = Portfolio
-    #form_class = PortfolioForm
+    form_class = PortfolioForm
     template_name = 'portfolio/portfolio_update.html'
 
 class PortfolioDeleteView(DeleteView):

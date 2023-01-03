@@ -20,6 +20,13 @@ class Category(TimeStampedUUIDModel):
             random_string = uuid.uuid4().hex[:12]
             slug = slugify(self.name + '-' + random_string)
         return slug
+    
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
 
 class Portfolio(TimeStampedUUIDModel):
     title = models.CharField(max_length=100, default='')
@@ -41,3 +48,7 @@ class Portfolio(TimeStampedUUIDModel):
 
     def delete(self):
         self.delete()
+    
+    class Meta:
+        verbose_name = "Portfolio"
+        verbose_name_plural = "Portfolios"
