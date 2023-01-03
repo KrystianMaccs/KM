@@ -8,5 +8,5 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Portfolio)
 class PortfolioAdmin(admin.ModelAdmin):
-    list_display = ['title', 'category']
+    list_display = ['title', 'category', 'description']
 
