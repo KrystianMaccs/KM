@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = "9scbl(%r0=clm-akft4319129p7@&odruj=47@!#(8j&u(@06n"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'krystianmaccs.onrender.com']
 #ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
