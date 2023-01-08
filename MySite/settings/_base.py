@@ -1,4 +1,4 @@
-from decouple import config, Csv
+from decouple import config
 from pathlib import Path
 import os
 
@@ -9,16 +9,10 @@ import cloudinary.api
 
 # Cloudinary config
 
-"""cloudinary.config(
-    CLOUD_NAME="drxmf5dr5",
-    API_KEY=166777423362632,
-    API_SECRET=fSsD1ufSdP6BdDy4MiuSy2zoLmw
-)"""
-
 cloudinary.config( 
-  cloud_name = "CLOUD_NAME", 
-  api_key = "API_KEY", 
-  api_secret = "API_SECRET",
+  cloud_name = config('CLOUD_NAME'),
+  api_key = config('API_KEY'),
+  api_secret = config('API_SECRET'),
 )
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -32,8 +26,8 @@ SECRET_KEY = config("SECRET_KEY",)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'krystianmaccs.onrender.com']
-#ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+#ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'krystianmaccs.onrender.com']
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default="krystianmaccs.onrender.com, 127.0.0.1, localhost", cast=lambda v: v.split(","))
 
 
 # Application definition

@@ -7,7 +7,7 @@
             {% for portfolio in portfolios %}
                 <h2> {{portfolio.title}}</h2>
                 <p> {{portfolio.description}}</p>
-                <li><a href="{% url 'portfolio_detail' portfolio.pk %}">{{portfolio.link}}</a></li>
+                <li><a href="{% url 'portfolio_detail' portfolio.pk %}">{{portfolio.title}}</a></li>
                 <img src="{{portfolio.image.url}}" alt="fish">
             {% endfor %}
         </ul>
