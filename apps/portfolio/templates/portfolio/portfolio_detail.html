@@ -2,8 +2,10 @@
 {% load static %}
 
 {% block content %}
-  <h1>Portfolio Detail</h1>
-  <p>Name: {{ portfolio.name }}</p>
-  <p>Description: {{ portfolio.description }}</p>
-  <p><a href="{{ portfolio.link }}">Link</a></p>
+  <div>
+    <h1>Portfolio Detail</h1>
+    <p>Name: {{ portfolio.name }}</p>
+    <p>Description: {{ portfolio.description }}</p>
+    <p><a href="{{ portfolio.link }}">Link</a></p>
+  </div>
 {% endblock %}

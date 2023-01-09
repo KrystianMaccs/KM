@@ -18,7 +18,9 @@ class Category(TimeStampedUUIDModel):
     def generate_unique_slug(self):
         slug = slugify(self.name)
         while Category.objects.filter(slug=slug).exists():
+            
             # Generate a random hexadecimal string of length 12
+            
             random_string = uuid.uuid4().hex[:12]
             slug = slugify(self.name + '-' + random_string)
         return slug

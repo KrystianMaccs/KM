@@ -1,11 +1,11 @@
-<header>
-    <nav>
-        <ul>
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'about' %}">About Me</a></li>
-            <li><a href="{% url 'services' %}">Services</a></li>
-            <li><a href="{% url 'projects' %}">Projects</a></li>
-            <li><a href="{% url 'contact' %}">Contact Me</a></li>
-        </ul>
-    </nav>
-</header>
+<div class="navbar">
+   <!-- <ul>
+        {% for category in categories %}
+            <li><a href="{% url 'portfolio_list' category.slug %}">{{category.name}}</a></li>
+            <img src="{{category.image.url}}" alt="fish">
+        {% endfor %}
+    </ul>-->
+    <ul>
+        <li><a href="{% url 'category_list' %}">Home</a></li>
+    </ul>
+</div>

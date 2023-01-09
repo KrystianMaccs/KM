@@ -2,12 +2,14 @@
 {% load static %}
 
 {% block content %}
-    <h1>Category List</h1>
+    <div class="category-list">
+        <h1>Category List</h1>
     
-    <ul>
-        {% for category in categories %}
-            <li><a href="{% url 'portfolio_list' category.slug %}">{{category.name}}</a></li>
-            <img src="{{category.image.url}}" alt="fish">
-        {% endfor %}
-    </ul>
+        <ul>
+            {% for category in categories %}
+                <li><a href="{% url 'portfolio_list' category.slug %}">{{category.name}}</a></li>
+                <img src="{{category.image.url}}" alt="fish">
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
