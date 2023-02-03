@@ -1,11 +1,11 @@
 <div class="navbar">
    <!-- <ul>
         {% for category in categories %}
-            <li><a href="{% url 'portfolio_list' category.slug %}">{{category.name}}</a></li>
+            <li><a href="{% url 'portfolio:portfolio_list' category.slug %}">{{category.name}}</a></li>
             <img src="{{category.image.url}}" alt="fish">
         {% endfor %}
     </ul>-->
     <ul>
-        <li><a href="{% url 'category_list' %}">Home</a></li>
+        <li><a href="{% url 'portfolio:category_list' %}">Home</a></li>
     </ul>
 </div>

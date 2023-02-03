@@ -1,6 +1,9 @@
 from decouple import config
 from pathlib import Path
 import os
+import mimetypes
+
+mimetypes.add_type("text/css", ".css", True)
 
 # Cloudinary imports
 import cloudinary
