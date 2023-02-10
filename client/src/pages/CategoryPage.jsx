@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const CategoryList = () => {
   const [myCategory, setMyCategory] = useState([]);
@@ -32,7 +33,9 @@ const CategoryList = () => {
   return (
     <ul>
       {myCategory.map(myCategory => (
-        <li key={myCategory.id}>{myCategory.name}</li>
+        <li key={myCategory.id}>
+          <Link to={`/projects_list/${myCategory.id}`}>{myCategory.name}</Link>
+        </li>
       ))}
     </ul>
   );

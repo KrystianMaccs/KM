@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ProjectList = () => {
+const ProjectList = ({ match }) => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -9,7 +9,7 @@ const ProjectList = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/v1/portfolio/projects_list/');
+        const response = await axios.get(`http://localhost:8080/api/v1/portfolio/categories/${match.params.categoryId}/projects/`);
         const data = response.data;
         setProjects(data);
         setLoading(false);
@@ -20,7 +20,7 @@ const ProjectList = () => {
     };
 
     fetchProjects();
-  }, []);
+  }, [match.params.categoryId]);
 
   if (loading) {
     return <div>Loading...</div>;
