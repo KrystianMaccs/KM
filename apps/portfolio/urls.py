@@ -1,11 +1,9 @@
 from django.urls import path
-from apps.portfolio.views import *
+from apps.portfolio.views import CategoryListOr404
 
 
-app_name = "portfolio"
+app_name = "portfolios"
 
 urlpatterns = [
-    path('categories/', CategoryListView.as_view(), name='category_list'),
-    path('portfolios/<slug:slug>/', PortfolioListView.as_view(), name='portfolio_list'),
-    path('portfolios/<str:slug>/', PortfolioDetailView.as_view(), name='portfolio_detail'),
+    path('categories/', CategoryListOr404.as_view(), name='category-list'),
 ]

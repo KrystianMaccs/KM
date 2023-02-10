@@ -1,22 +1,7 @@
 from decouple import config
 from pathlib import Path
 import os
-import mimetypes
 
-mimetypes.add_type("text/css", ".css", True)
-
-# Cloudinary imports
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
-
-# Cloudinary config
-
-cloudinary.config( 
-  cloud_name = config('CLOUD_NAME'),
-  api_key = config('API_KEY'),
-  api_secret = config('API_SECRET'),
-)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -48,7 +33,8 @@ DJANGO_APPS = [
 SITE_ID = 1
 
 THIRD_PARTY_APPS = [
-    "cloudinary",
+    "rest_framework",
+    "corsheaders",
 ]
 
 LOCAL_APPS = [
@@ -60,6 +46,7 @@ LOCAL_APPS = [
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -68,6 +55,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'MySite.urls'
 
