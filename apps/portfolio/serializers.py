@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.portfolio.models import Category
+from apps.portfolio.models import Category, Project
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,3 +15,9 @@ class CategorySerializer(serializers.ModelSerializer):
         instance.slug = validated_data.get('slug', instance.slug)
         instance.save()
         return instance
+
+
+class ProjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Project
+        fields = ('id', 'title', 'description', 'slug', 'category', 'image', 'url')

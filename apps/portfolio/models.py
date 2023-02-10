@@ -18,10 +18,17 @@ class Category(TimeStampedUUIDModel):
         verbose_name_plural = "Categories"
 
 
-"""class Portfolio(TimeStampedUUIDModel):
-    title = models.CharField(max_length=100, default='')
-    description = models.CharField(max_length=100, default='')
-    slug = models.SlugField(max_length=200, default='', blank=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=None)
-    image = CloudinaryField("featured image", blank=True)
-    link = models.URLField(max_length=255, default='')"""
+class Project(TimeStampedUUIDModel):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    slug = models.SlugField(unique=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='projects/')
+    url = models.URLField()
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name = "Project"
+        verbose_name_plural = "Projects"

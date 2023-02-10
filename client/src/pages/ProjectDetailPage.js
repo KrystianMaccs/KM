@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const CategoryList = () => {
-  const [myCategory, setMyCategory] = useState([]);
+const ProjectDetail = ({ match }) => {
+  const [project, setProject] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchMyModels = async () => {
+    const fetchProject = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/v1/portfolio/categories/');
-        setMyCategory(response.data);
+        const response = await axios.get(`http://localhost:8080/api/v1/projects/${match.params.slug}/`);
+        const data = response.data;
+        setProject(data);
         setLoading(false);
       } catch (err) {
         setError(err);
@@ -18,8 +19,8 @@ const CategoryList = () => {
       }
     };
 
-    fetchMyModels();
-  }, []);
+    fetchProject();
+  }, [match.params.slug]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -30,12 +31,11 @@ const CategoryList = () => {
   }
 
   return (
-    <ul>
-      {myCategory.map(myCategory => (
-        <li key={myCategory.id}>{myCategory.name}</li>
-      ))}
-    </ul>
+    <div>
+      <h1>{project.title}</h1>
+      <p>{project.description}</p>
+    </div>
   );
 };
 
-export default CategoryList;
+export default ProjectDetail;
