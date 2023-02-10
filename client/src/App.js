@@ -1,15 +1,10 @@
 import './App.css';
 import CategoryPage from "./pages/CategoryPage";
 
-function App() {
+
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-       
-       
-      </header>
-    </div>
+    <CategoryPage />
   );
 }
-
-export default App;
