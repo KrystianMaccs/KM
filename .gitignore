@@ -4,7 +4,7 @@
 .DS_Store
 staticfiles
 mediafiles
-node_modules
+client/node_modules
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
