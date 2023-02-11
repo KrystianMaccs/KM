@@ -5,10 +5,10 @@ import ProjectDetailPage  from './pages/ProjectDetailPage';
 
 export default function App() {
   return (
-    <div>
+    <>
       <CategoryPage />
       <ProjectListPage />
       <ProjectDetailPage />
-    </div>
+    </>
   );
 }
