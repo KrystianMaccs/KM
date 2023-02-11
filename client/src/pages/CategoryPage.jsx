@@ -32,13 +32,15 @@ const CategoryPage = () => {
 
   return (
     <ul>
-      {myCategory.map(myCategory => (
-        <li key={myCategory.id}>
-          <Link to='/project_list/'>{myCategory.title}</Link>
-        </li>
-      ))}
+      {myCategory && 
+        myCategory.map(category => (
+          <li key={category.id}>
+            <Link to='/project_list/'>{myCategory.title}</Link>
+          </li>
+        ))
+      }
     </ul>
-  );
+  );  
 };
 
 export default CategoryPage;
