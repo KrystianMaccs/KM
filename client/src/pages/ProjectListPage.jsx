@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ProjectList = ({ match }) => {
+const ProjectListPage = ({ match }) => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -39,4 +39,4 @@ const ProjectList = ({ match }) => {
   );
 };
 
-export default ProjectList;
+export default ProjectListPage;

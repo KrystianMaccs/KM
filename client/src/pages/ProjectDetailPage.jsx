@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ProjectDetail = ({ match }) => {
+const ProjectDetailPage = ({ match }) => {
   const [project, setProject] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -38,4 +38,4 @@ const ProjectDetail = ({ match }) => {
   );
 };
 
-export default ProjectDetail;
+export default ProjectDetailPage;

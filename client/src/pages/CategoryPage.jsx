@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const CategoryList = () => {
+const CategoryPage = () => {
   const [myCategory, setMyCategory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -34,11 +34,11 @@ const CategoryList = () => {
     <ul>
       {myCategory.map(myCategory => (
         <li key={myCategory.id}>
-          <Link to={`/categories/${myCategory.id}/`}>{myCategory.title}</Link>
+          <Link to='/project_list/'>{myCategory.title}</Link>
         </li>
       ))}
     </ul>
   );
 };
 
-export default CategoryList;
+export default CategoryPage;
