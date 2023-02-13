@@ -10,7 +10,7 @@ const CategoryPage = () => {
   useEffect(() => {
     const fetchMyModels = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/v1/portfolio/categories/');
+        const response = await axios.get('http://localhost:8000/api/v1/portfolio/categories/');
         setMyCategory(response.data);
         setLoading(false);
       } catch (err) {
@@ -35,7 +35,7 @@ const CategoryPage = () => {
       {myCategory && 
         myCategory.map(category => (
           <li key={category.id}>
-            <Link to='/project_list/'>{myCategory.title}</Link>
+            <Link to='/project_list/'>{category.name}</Link>
           </li>
         ))
       }

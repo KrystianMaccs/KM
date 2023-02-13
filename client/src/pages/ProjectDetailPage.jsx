@@ -9,7 +9,7 @@ const ProjectDetailPage = ({ match }) => {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/v1/projects/${match.params.slug}/`);
+        const response = await axios.get(`http://localhost:8000/api/v1/projects/${match.params.slug}/`);
         const data = response.data;
         setProject(data);
         setLoading(false);
