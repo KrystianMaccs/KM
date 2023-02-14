@@ -19,6 +19,7 @@ class ProjectListView(generics.ListAPIView):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
 
+
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()
         if queryset.exists():
@@ -30,6 +31,7 @@ class ProjectListView(generics.ListAPIView):
 class ProjectDetailView(generics.RetrieveAPIView):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
+    lookup_field = 'slug'
 
     def retrieve(self, request, *args, **kwargs):
         try:

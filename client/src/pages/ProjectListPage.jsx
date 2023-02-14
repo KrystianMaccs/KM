@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom'; // import from react-router-dom
+import { useParams, Link } from 'react-router-dom'; // import from react-router-dom
 
 const ProjectListPage = (props) => {
   const params = useParams(); // Get the params with this hook
@@ -35,7 +35,9 @@ const ProjectListPage = (props) => {
   return (
     <ul>
       {projects.map(project => (
-        <li key={project.id}>{project.title}</li>
+        <li key={project.id}>
+          <Link to='/project_list/:id/'>{project.title}</Link>
+        </li>
       ))}
     </ul>
   );
