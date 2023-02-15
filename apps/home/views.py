@@ -9,6 +9,7 @@ from apps.home.serializers import NavbarSerializer, ContactSerializer, AboutMeSe
 class NavbarList(generics.ListCreateAPIView):
     queryset = Navbar.objects.all()
     serializer_class = NavbarSerializer
+    lookup_field = 'slug'
 
 class ContactList(generics.ListCreateAPIView):
     queryset = Contact.objects.all()

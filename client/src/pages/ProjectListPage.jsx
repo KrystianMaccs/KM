@@ -11,7 +11,7 @@ const ProjectListPage = (props) => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/v1/portfolio/project_list/`);
+        const response = await axios.get(`/api/v1/portfolio/project_list/`);
         const data = response.data;
         setProjects(data);
         setLoading(false);
@@ -36,7 +36,7 @@ const ProjectListPage = (props) => {
     <ul>
       {projects.map(project => (
         <li key={project.id}>
-          <Link to='/project_list/:id/'>{project.title}</Link>
+          <Link to={`/project_list/${project.slug}/`}>{project.title}</Link>
         </li>
       ))}
     </ul>

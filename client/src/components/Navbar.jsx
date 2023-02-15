@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const NavbarPage = () => {
   const [myNavbar, setMyNavbar] = useState([]);
@@ -9,7 +10,7 @@ const NavbarPage = () => {
   useEffect(() => {
     const fetchMyModels = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/v1/home/navbar/');
+        const response = await axios.get('/api/v1/home/navbar/');
         setMyNavbar(response.data);
         setLoading(false);
       } catch (err) {
@@ -34,7 +35,7 @@ const NavbarPage = () => {
       {myNavbar && 
         myNavbar.map(navbar => (
           <li key={navbar.id}>
-            {navbar.name}
+            <Link to='/'>{navbar.name}</Link>
           </li>
         ))
       }
