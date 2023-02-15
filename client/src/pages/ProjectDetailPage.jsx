@@ -11,7 +11,7 @@ const ProjectDetailPage = () => {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const response = await axios.get(`/api/v1/portfolio/project_list/${slug}/`);
+        const response = await axios.get(`/api/v1/portfolio/projects/${slug}/`);
         const data = response.data;
         setProject(data);
         setLoading(false);

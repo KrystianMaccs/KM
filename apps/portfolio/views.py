@@ -28,6 +28,7 @@ class ProjectListView(generics.ListAPIView):
         else:
             raise NotFound("No projects found.")
 
+
 class ProjectDetailView(generics.RetrieveAPIView):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer

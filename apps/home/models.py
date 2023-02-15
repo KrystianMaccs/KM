@@ -31,11 +31,13 @@ class Contact(TimeStampedUUIDModel):
     def __str__(self):
         return self.email
     
-
+    def save(self, *arg):
+        if self.slug is None:
+            self.slug = slugify(self.name)
+        super(AboutMe, self).save(*arg)
 
 class AboutMe(TimeStampedUUIDModel):
     name = models.CharField(max_length=255)
-    resume = models.FileField(upload_to='resumes/', blank=True, null=True)
     description = models.TextField()
     
     class Meta:
@@ -49,3 +51,10 @@ class AboutMe(TimeStampedUUIDModel):
         if self.slug is None:
             self.slug = slugify(self.name)
         super(AboutMe, self).save(*arg)
+        
+class Resume(TimeStampedUUIDModel):
+    name = models.CharField(max_length=255)
+    resume = models.FileField(upload_to='resumes/')
+
+    def __str__(self):
+        return self.name

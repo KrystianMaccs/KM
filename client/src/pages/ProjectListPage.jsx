@@ -11,7 +11,7 @@ const ProjectListPage = (props) => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get(`/api/v1/portfolio/project_list/`);
+        const response = await axios.get(`/api/v1/portfolio/projects/`);
         const data = response.data;
         setProjects(data);
         setLoading(false);

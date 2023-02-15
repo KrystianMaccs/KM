@@ -14,4 +14,4 @@ class ContactAdmin(admin.ModelAdmin):
     
 @admin.register(AboutMe)
 class AboutMeAdmin(admin.ModelAdmin):
-    list_display = ['name', 'resume', 'description']
+    list_display = ['name', 'description']
