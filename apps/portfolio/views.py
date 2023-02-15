@@ -1,4 +1,4 @@
-from rest_framework import generics
+from rest_framework import generics, views
 from rest_framework.response import Response
 from apps.portfolio.serializers import CategorySerializer, ProjectSerializer
 from rest_framework.exceptions import NotFound
@@ -14,8 +14,19 @@ class CategoryListOr404(generics.ListAPIView):
         except Category.DoesNotExist:
             raise NotFound(detail="Category does not exist.")
         
+class CategoryProjectList(views.APIView):
+    def get(self, request, slug):
+        try:
+            category = Category.objects.get(slug=slug)
+        except Category.DoesNotExist:
+            return Response({"error": "Category not found"}, status=404)
 
-class ProjectListView(generics.ListAPIView):
+        projects = Project.objects.filter(category=category)
+        serializer = ProjectSerializer(projects, many=True)
+        return Response(
+serializer.data
+) 
+"""class ProjectListView(generics.ListAPIView):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
 
@@ -26,7 +37,7 @@ class ProjectListView(generics.ListAPIView):
             serializer = ProjectSerializer(queryset, many=True)
             return Response(serializer.data)
         else:
-            raise NotFound("No projects found.")
+            raise NotFound("No projects found.")"""
 
 
 class ProjectDetailView(generics.RetrieveAPIView):

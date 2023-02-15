@@ -13,10 +13,9 @@ class Navbar(TimeStampedUUIDModel):
     def __str__(self):
         return self.name
     
-    def save(self, *arg):
-        if self.slug is None:
-            self.slug = slugify(self.name)
-        super(Navbar, self).save(*arg)
+    def save(self, *arg, **kwargs):
+        self.slug = slugify(self.name)
+        super(Navbar, self).save(arg, kwargs)
     
 class Contact(TimeStampedUUIDModel):
     email = models.EmailField()
@@ -30,11 +29,6 @@ class Contact(TimeStampedUUIDModel):
 
     def __str__(self):
         return self.email
-    
-    def save(self, *arg):
-        if self.slug is None:
-            self.slug = slugify(self.name)
-        super(AboutMe, self).save(*arg)
 
 class AboutMe(TimeStampedUUIDModel):
     name = models.CharField(max_length=255)
@@ -47,10 +41,9 @@ class AboutMe(TimeStampedUUIDModel):
     def __str__(self):
         return self.name
     
-    def save(self, *arg):
-        if self.slug is None:
-            self.slug = slugify(self.name)
-        super(AboutMe, self).save(*arg)
+    def save(self, *arg, **kwargs):
+        self.slug = slugify(self.name)
+        super().save(arg, kwargs)
         
 class Resume(TimeStampedUUIDModel):
     name = models.CharField(max_length=255)

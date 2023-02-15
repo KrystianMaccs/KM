@@ -11,10 +11,9 @@ class Category(TimeStampedUUIDModel):
     def __str__(self):
         return self.name
     
-    def save(self, *arg):
-        if self.slug is None:
-            self.slug = slugify(self.name)
-        super(Category, self).save(*arg)
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        return super().save(args, kwargs)
     
     def image_url(self):
         return self.image.url
@@ -36,10 +35,9 @@ class Project(TimeStampedUUIDModel):
     image = models.ImageField(upload_to='projects/')
     url = models.URLField()
     
-    def save(self, *arg):
-        if self.slug is None:
-            self.slug = slugify(self.title)
-        super(Project, self).save(*arg)
+    def save(self, *arg, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(arg, kwargs)
 
     def __str__(self):
         return self.title

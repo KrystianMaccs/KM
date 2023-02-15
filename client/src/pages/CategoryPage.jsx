@@ -35,7 +35,7 @@ const CategoryPage = () => {
       {myCategory && 
         myCategory.map(category => (
           <li key={category.id}>
-            <Link to='/project_list/'>{category.name}</Link>
+            <Link to={`/category-project/${category.slug}/`}>{category.name}</Link>
           </li>
         ))
       }

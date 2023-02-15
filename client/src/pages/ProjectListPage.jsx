@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams, Link } from 'react-router-dom'; // import from react-router-dom
 
 const ProjectListPage = (props) => {
-  const params = useParams(); // Get the params with this hook
+  const { slug } = useParams(); // Get the slug parameter from the URL
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -11,7 +11,7 @@ const ProjectListPage = (props) => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get(`/api/v1/portfolio/projects/`);
+        const response = await axios.get(`/api/v1/portfolio/category-projects/${slug}`);
         const data = response.data;
         setProjects(data);
         setLoading(false);
@@ -22,7 +22,7 @@ const ProjectListPage = (props) => {
     };
 
     fetchProjects();
-  }, [params.categoryId]);
+  }, [slug]);
 
   if (loading) {
     return <div>Loading...</div>;
