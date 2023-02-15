@@ -9,7 +9,6 @@ const HomePage = () => {
         <Routes>
             <Route path="*" element={<Navbar />} />
         </Routes>
-      Hey!
     </div>
   );
 };
