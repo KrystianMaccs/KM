@@ -1,17 +1,12 @@
 from rest_framework import serializers
-from apps.home.models import AboutMe, Navbar, Contact, Resume
+from apps.home.models import AboutMe, Contact, Resume
 
 
-
-class NavbarSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Navbar
-        fields = ('id', 'name', 'slug')
 
 class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
-        fields = ('id', 'email', 'subject', 'slug', 'message')
+        fields = ('id', 'email', 'subject', 'message')
 
 
 class AboutMeSerializer(serializers.ModelSerializer):

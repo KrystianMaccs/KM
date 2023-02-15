@@ -23,21 +23,7 @@ class CategoryProjectList(views.APIView):
 
         projects = Project.objects.filter(category=category)
         serializer = ProjectSerializer(projects, many=True)
-        return Response(
-serializer.data
-) 
-"""class ProjectListView(generics.ListAPIView):
-    queryset = Project.objects.all()
-    serializer_class = ProjectSerializer
-
-
-    def list(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
-        if queryset.exists():
-            serializer = ProjectSerializer(queryset, many=True)
-            return Response(serializer.data)
-        else:
-            raise NotFound("No projects found.")"""
+        return Response(serializer.data)
 
 
 class ProjectDetailView(generics.RetrieveAPIView):

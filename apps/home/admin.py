@@ -1,17 +1,18 @@
 from django.contrib import admin
 
-from apps.home.models import Navbar, Contact, AboutMe
+from apps.home.models import Contact, AboutMe, Resume
 
-    
-@admin.register(Navbar)
-class NavbarAdmin(admin.ModelAdmin):
-    list_display = ['name', 'slug']
 
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ['email', 'subject', 'slug', 'message']
+    list_display = ['email', 'subject', 'message']
     
 @admin.register(AboutMe)
 class AboutMeAdmin(admin.ModelAdmin):
     list_display = ['name', 'description']
+
+
+@admin.register(Resume)
+class ResumeAdmin(admin.ModelAdmin):
+    list_display = ['name', 'resume']
