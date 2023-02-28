@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.9
-    working_directory: /~
+    working_directory: /app
     steps:
       - checkout
           
@@ -11,13 +11,6 @@ jobs:
           name: Load environment variables
           command: |
             echo 'Loading environment variables...'
-            set -o allexport
-            source .env
-            set +o allexport
+            export SECRET_KEY=$SECRET_KEY
       - run: pip install -r requirements.txt
       - run: python manage.py test
-    environment:
-      SECRET_KEY: $SECRET_KEY
-      DEBUG: $DEBUG
-      ALLOWED_HOST: $ALLOWED_HOST
-      # Add any other variables from .env here
