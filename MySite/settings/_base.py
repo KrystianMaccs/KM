@@ -126,3 +126,22 @@ MEDIA_URL = "/mediafiles/"
 MEDIA_ROOT = BASE_DIR / "mediafiles"
 
 AUTH_USER_MODEL = "users.User"
+
+
+# Set your email backend. This example uses the SMTP backend.
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+# Set the email server settings. Replace with your email server settings.
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'krystianmaccs@gmail.com'
+EMAIL_HOST_PASSWORD = 'Krystabella1589'
+
+# Set the default 'from' address for emails sent by your app.
+DEFAULT_FROM_EMAIL = 'krystianmaccs@gmail.com'
+
+# Set the email recipient for the contact form.
+CONTACT_EMAIL_RECIPIENT = 'aerielwrites@gmail.com'

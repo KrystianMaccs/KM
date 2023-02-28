@@ -15,4 +15,4 @@ class AboutMeAdmin(admin.ModelAdmin):
 
 @admin.register(Resume)
 class ResumeAdmin(admin.ModelAdmin):
-    list_display = ['name', 'resume']
+    list_display = ['name', 'file']

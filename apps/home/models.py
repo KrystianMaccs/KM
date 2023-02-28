@@ -5,6 +5,7 @@ from django.utils.text import slugify
     
 class Contact(TimeStampedUUIDModel):
     email = models.EmailField()
+    name = models.CharField(max_length=50, default='John Doe')
     subject = models.CharField(max_length=300)
     message = models.TextField()
     
@@ -32,7 +33,7 @@ class AboutMe(TimeStampedUUIDModel):
         
 class Resume(TimeStampedUUIDModel):
     name = models.CharField(max_length=255)
-    resume = models.FileField(upload_to='resumes/')
+    file = models.FileField(upload_to='resumes/')
 
     def __str__(self):
         return self.name
