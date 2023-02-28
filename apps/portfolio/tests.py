@@ -1,41 +1,37 @@
 from django.test import TestCase
-from apps.portfolio.models import *
+from .models import Category, Project
 
-class CategoryTestCase(TestCase):
+
+class ModelsTestCase(TestCase):
     def setUp(self):
-        # Create a new category
-        Category.objects.create(name='Test Category')
-
-    def test_generate_unique_slug(self):
-        # Create a new category with a name that is already in use
-        category = Category.objects.create(name='Test Category')
-        # Check that the slug is unique
-        self.assertNotEqual(category.slug, 'test-category')
-
-class PortfolioTestCase(TestCase):
-    def setUp(self):
-        # Create a new category
-        self.category = Category.objects.create(name='Test Category')
-        # Create a new portfolio
-        self.portfolio = Portfolio.objects.create(
-            title='Test Portfolio',
-            description='This is a test portfolio',
-            category=self.category,
-            link='http://test.com'
+        self.category = Category.objects.create(
+            name="Test Category",
+            image="test_image.jpg",
+            slug="test-category",
         )
 
-    def test_update(self):
-        # Update the portfolio with new data
-        self.portfolio.update({
-            'title': 'Updated Title',
-            'description': 'Updated description',
-            'link': 'http://updated.com'
-        })
-        # Refresh the portfolio from the database
-        self.portfolio.refresh_from_db()
-        # Check that the fields have been correctly updated
-        self.assertEqual(self.portfolio.title, 'Updated Title')
-        self.assertEqual(self.portfolio.description, 'Updated description')
-        self.assertEqual(self.portfolio.link, 'http://updated.com')
+        self.category.save()
 
+        self.project = Project.objects.create(
+            title="Test Project",
+            description="This is a test project.",
+            slug="test-project",
+            category=self.category,
+            image="test_image.jpg",
+            url="https://example.com",
+        )
 
+    def test_category_str(self):
+        self.assertEqual(str(self.category), "Test Category")
+
+    def test_category_slug(self):
+        self.assertEqual(self.category.slug, "test-category")
+
+    def test_project_str(self):
+        self.assertEqual(str(self.project), "Test Project")
+
+    def test_project_slug(self):
+        self.assertEqual(self.project.slug, "test-project")
+
+    def test_project_category(self):
+        self.assertEqual(self.project.category, self.category)

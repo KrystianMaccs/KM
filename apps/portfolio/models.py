@@ -4,7 +4,7 @@ from django.utils.text import slugify
 
 class Category(TimeStampedUUIDModel):
     name = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='images/', blank=True)
     slug = models.SlugField(unique=True, null=True, blank=True)
     
 
@@ -13,7 +13,7 @@ class Category(TimeStampedUUIDModel):
     
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
-        return super().save(args, kwargs)
+        return super().save(*args, **kwargs)
     
     def image_url(self):
         return self.image.url
@@ -32,12 +32,12 @@ class Project(TimeStampedUUIDModel):
     description = models.TextField()
     slug = models.SlugField(unique=True, null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='projects/')
+    image = models.ImageField(upload_to='projects/', blank=True)
     url = models.URLField()
     
     def save(self, *arg, **kwargs):
         self.slug = slugify(self.title)
-        super().save(arg, kwargs)
+        return super().save(*arg, **kwargs)
 
     def __str__(self):
         return self.title
