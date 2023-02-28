@@ -2,15 +2,13 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/python:3.9
+      - image: python:3.9
     steps:
       - checkout
-      - run:
-          name: Load environment variables
-          command: |
-            echo 'Loading environment variables...'
-            set -o allexport
-            source .env
-            set +o allexport
       - run: pip install -r requirements.txt
       - run: python manage.py test
+    environment:
+      - DJANGO_SETTINGS_MODULE=MySite.settings._base
+      - PYTHONPATH=.
+      - DOTENV_PATH=./.env
+      - PYTHONUNBUFFERED=1
