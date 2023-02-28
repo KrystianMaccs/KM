@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.9
+    working_directory: /app
     steps:
       - checkout
       - run:
@@ -14,3 +15,8 @@ jobs:
             set +o allexport
       - run: pip install -r requirements.txt
       - run: python manage.py test
+    environment:
+      SECRET_KEY: $SECRET_KEY
+      DEBUG: $DEBUG
+      ALLOWED_HOST: $ALLOWED_HOST
+      # Add any other variables from .env here
