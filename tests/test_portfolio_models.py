@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Category, Project
+from apps.portfolio.models import Category, Project
 
 
 class ModelsTestCase(TestCase):
